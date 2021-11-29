@@ -1,6 +1,6 @@
 const fs = require('fs');
 const csv = require('csv-parser')
-const users = [];
+const csv_data = [];
 const stats = [];
 const fileName = 'text.csv'
 let average_feet = [];
@@ -11,37 +11,42 @@ function main() {
 
         console.log("je suis dans le fichier ", fileName)
         fs.createReadStream(fileName)
-            .pipe(csv())
+            .pipe(csv({
+                delimiter: ';',
+            }))
             .on('data', function (row) {
-                const username = generateUsername(row.Firstname, row.Surname);
-                addToFeetTab(row.Feet);
-                addToHeightTab(row.Height);
-
-                const user = {
-                    username,
-                    firstname: row.Firstname,
-                    surname: row.Surname,
-                    feet: row.Feet,
-                    height: row.Height,
+                // console.log(row)
+                // const username = generateUsername(row.Firstname, row.Surname);
+                // addToFeetTab(row.Feet);
+                // addToHeightTab(row.Height);
+                // csv_data.push(row)
+                console.log(row)
+                const datas = {
+                    num: row.Firstname,
+                    date: row.Surname,
+                    jackpot: row.Feet,
+                    n1: row.Height,
 
                 }
-                users.push(user)
+                console.log(datas)
+                // users.push(user)
+                // console.table(csv_data)
             })
             .on('error', function (err) {
                 console.log("ERROR = ", err)
                 // do something with `err`
             })
             .on('end', function () {
-
-                const stat = {
-                    "feets": calculate_average(average_feet),
-                    "heights": calculate_average(average_height)
-                }
-                stats.push(stat)
-                writeStats("Average Feet" + calculate_average(average_feet).toString())
-                writeStats("Average Height" + calculate_average(average_height).toString())
-                console.table(users)
-                console.table(stats)
+                //
+                // const stat = {
+                //     "feets": calculate_average(average_feet),
+                //     "heights": calculate_average(average_height)
+                // }
+                // stats.push(stat)
+                // writeStats("Average Feet" + calculate_average(average_feet).toString())
+                // writeStats("Average Height" + calculate_average(average_height).toString())
+                // // console.table(users)
+                // console.table(stats)
 
             })
     } else {

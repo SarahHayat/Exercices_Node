@@ -1,5 +1,6 @@
-Firstname,Surname,Feet,Height
-hayat,sarah,41,175,
-hartmann,francesco,42,170
-chalet,emerick,45,176
-thevenin, franck,42,176
+Firstname;Surname;Feet;Height
+hayat;sarah;41;175;
+hartmann;francesco;42;170
+chalet;emerick;45;176
+thevenin;franck;42;176
+
