@@ -38,6 +38,8 @@ function main() {
                     "heights": calculate_average(average_height)
                 }
                 stats.push(stat)
+                writeStats("Average Feet" + calculate_average(average_feet).toString())
+                writeStats("Average Height" + calculate_average(average_height).toString())
                 console.table(users)
                 console.table(stats)
 
@@ -74,8 +76,18 @@ function verifyFileExist(fileName) {
     return fs.existsSync(fileName);
 }
 
-function verifyIsCsvFile(fileName){
+function verifyIsCsvFile(fileName) {
     return fileName.split(".")[1] === "csv";
+}
+
+function writeStats(data) {
+
+    fs.appendFile("stats.csv", data + "\n", function (err) {
+        if (err) {
+            return console.log(err);
+        }
+        console.log("The file was saved!");
+    })
 }
 
 main();

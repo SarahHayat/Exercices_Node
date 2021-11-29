@@ -1,14 +1,14 @@
-const crypto = require('LaMachine/crypto')
+const crypto = require('crypto')
 
 const casino = () => {
     let j = 0;
 
     for (let i = 0; i < 100; i++) {
-        var number1 = get_symboles(crypto.randomInt(0, 8))
-        var number2 = get_symboles(crypto.randomInt(0, 8))
-        var number3 = get_symboles(crypto.randomInt(0, 8))
-        console.log(`${number1} ${number2} ${number3}`);
-        if (number1 === number2 && number2 === number3) {
+        var a = get_symboles(crypto.randomInt(0, 8))
+        var b = get_symboles(crypto.randomInt(0, 8))
+        var c = get_symboles(crypto.randomInt(0, 8))
+        console.log(`${a} ${b} ${c}`);
+        if (a === b && b === c) {
             j++;
         }
     }
