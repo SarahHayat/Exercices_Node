@@ -1,5 +1,8 @@
-export default (app) => {
-  app.post("/api/signin");
-  app.get("/api/signout");
-  app.get("/api/me");
-};
+import express from "express";
+import {login} from "../controlllers/auth.controller";
+const router = express.Router();
+
+// router.post("/registration", register);
+router.post("/login", login);
+
+export default router;

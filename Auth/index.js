@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import userRoutes from "./routes/user.route";
+import authRoutes from "./routes/auth.route";
 
 const {urlencoded, json} = bodyParser;
 const {connect, connection} = mongoose;
@@ -16,6 +17,7 @@ app.use(json());
 
 //Routage
 app.use("/api/user",userRoutes);
+app.use("/",authRoutes);
 //Set up default mongoose connection
 var mongoDB =
     "mongodb+srv://sarah:password_user@cluster0.oofm1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
