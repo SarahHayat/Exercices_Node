@@ -1,6 +1,7 @@
-import { create } from "../controlllers/user.controller"
+import { create } from "../controlllers/user.controller";
+import express from "express";
+const router = express.Router();
 
-module.exports = (app) => {
-    app.post("/api/create", create)
-  };
-  
+router.post("/api/create", create);
+
+export default router;
