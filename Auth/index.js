@@ -15,7 +15,7 @@ app.use(urlencoded({extended: false}));
 app.use(json());
 
 //Routage
-app.use(userRoutes);
+app.use("/api/user",userRoutes);
 //Set up default mongoose connection
 var mongoDB =
     "mongodb+srv://sarah:password_user@cluster0.oofm1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
