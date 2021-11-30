@@ -1,7 +1,7 @@
 var express = require("express");
 var mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-app.use(cookies.express({ keys: [process.env.COOKIE_KEY] }));
+// app.use(cookies.express({ keys: [process.env.COOKIE_KEY] }));
 
 var app = express();
 const port = process.env.PORT || 8000;
@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //Set up default mongoose connection
-var mongoDB = "mongodb://127.0.0.1/my_database";
+var mongoDB = "mongodb://127.0.0.1:27017/user";
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 
 //Get the default connection
