@@ -1,24 +1,16 @@
-import bcrypt from "bcrypt";
-import {User} from "../entities/user";
 import Joi from "joi";
+import {signIn, signOut} from "../services/auth";
 
-export function login(req, res) {
+export function login(req, res, next) {
     const {error} = schema.validate(req.body);
     if (error) {
         return res.status(400).json(error.details[0].message);
     }
-    User.findOne({email: req.body.email})
-        .then((user) => {
-            const validPassword = bcrypt.compareSync(req.body.password, user.password);
-            if (!validPassword) {
-                return res.status(400).json('Incorrect email or password.');
-            }
-            res.status(200).json(user);
-        })
-        .catch((err) => {
-            return res.status(400).json('Incorrect email or password.');
-        })
+    signIn(res, req, next);
+}
 
+export function logout(req, res, next) {
+    signOut(req, res, next);
 }
 
 

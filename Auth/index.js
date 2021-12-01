@@ -3,6 +3,8 @@ import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import userRoutes from "./routes/user.route";
 import authRoutes from "./routes/auth.route";
+import {jwtLogin, localLogin} from "./services/auth";
+import passport from "passport";
 
 const {urlencoded, json} = bodyParser;
 const {connect, connection} = mongoose;
@@ -11,6 +13,9 @@ const {connect, connection} = mongoose;
 
 const app = express();
 const port = process.env.PORT || 8000;
+
+passport.use(jwtLogin);
+passport.use(localLogin);
 
 app.use(urlencoded({extended: false}));
 app.use(json());
