@@ -13,7 +13,7 @@ export function login(req, res) {
             if (!validPassword) {
                 return res.status(400).json('Incorrect email or password.');
             }
-            res.send(true);
+            res.status(200).json(user);
         })
         .catch((err) => {
             return res.status(400).json('Incorrect email or password.');
